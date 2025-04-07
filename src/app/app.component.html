@@ -1,3 +1,29 @@
-<!-- interpolation -->
-<p>{{title}}</p>
-<app-alert></app-alert>
+<h1>Password Generator</h1>
+<div>
+  <label for="">Length</label>
+  <!-- Two-Way Binding -->
+  <input (input)="onChangeLength($event)" [(ngModel)]="length" />
+  {{length}}
+</div>
+<div>
+  <label for="">Use Letters</label>
+  <input (change)="onChangeLetters()" type="checkbox" name="" id="">
+  <!-- {{includeLetters}} -->
+</div>
+<div>
+  <label for="">Use Numbers</label>
+  <input (change)="onChangeNumbers()" type="checkbox" name="" id="">
+</div>
+<div>
+  <label for="">Use Symbols</label>
+  <input (change)="onChangeSymbols()" type="checkbox" name="" id="">
+</div>
+<!-- Event Binding -->
+<button [disabled]="disableBtn" (click)="onButtonClick()" type="button">Generate!</button>
+<div>
+  <p [innerText]="title"></p>
+  <!-- Property Binding -->
+  <input type="text" [value]="getPassword()">
+  <!-- Interpolation -->
+  <!-- {{getPassword()}} -->
+</div>
