@@ -1,14 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
 })
 export class AppComponent {
+  showMyPass = false;
   title = 'Your Password';
   length: number = 0;
   disableBtn = true;
@@ -45,6 +47,7 @@ export class AppComponent {
       generatedPassword += validPassword[index];
     }
     this.password = generatedPassword;
+    this.showMyPass = true;
   }
   onChangeSymbols() {
     this.includeSymbols = !this.includeSymbols;

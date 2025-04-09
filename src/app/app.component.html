@@ -1,29 +1,65 @@
-<h1>Password Generator</h1>
-<div>
-  <label for="">Length</label>
-  <!-- Two-Way Binding -->
-  <input (input)="onChangeLength($event)" [(ngModel)]="length" />
-  {{length}}
+<h1 class="title is-3 has-text-centered">Password Generator</h1>
+
+<div class="box p-5">
+  <!-- Length Input -->
+  <div class="field">
+    <label class="label">Length</label>
+    <div class="control">
+      <input class="input" type="number" (input)="onChangeLength($event)" [(ngModel)]="length" />
+    </div>
+  </div>
+
+  <!-- Use Letters -->
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" (change)="onChangeLetters()" />
+      Use Letters
+    </label>
+  </div>
+
+  <!-- Use Numbers -->
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" (change)="onChangeNumbers()" />
+      Use Numbers
+    </label>
+  </div>
+
+  <!-- Use Symbols -->
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" (change)="onChangeSymbols()" />
+      Use Symbols
+    </label>
+  </div>
+
+  <!-- Buttons -->
+  <div class="field is-grouped mt-4">
+    <!-- <div class="control">
+      <button class="button is-light" type="button">Button</button>
+    </div> -->
+    <div class="control">
+      <button
+        class="button is-primary"
+        [disabled]="!(includeLetters || includeNumbers || includeSymbols)"
+        (click)="onButtonClick()"
+        type="button">
+        Generate&nbsp;<i class="fa-solid fa-repeat"></i>
+      </button>
+    </div>
+  </div>
 </div>
-<div>
-  <label for="">Use Letters</label>
-  <input (change)="onChangeLetters()" type="checkbox" name="" id="">
-  <!-- {{includeLetters}} -->
+
+<!-- Output -->
+<div *ngIf="showMyPass; else empty" class="notification is-info p-5">
+  <p class="has-text-weight-semibold">{{ title }}</p>
+  <div class="field">
+    <div class="control">
+      <input class="input is-info" type="text" [value]="getPassword()" readonly />
+    </div>
+  </div>
 </div>
-<div>
-  <label for="">Use Numbers</label>
-  <input (change)="onChangeNumbers()" type="checkbox" name="" id="">
-</div>
-<div>
-  <label for="">Use Symbols</label>
-  <input (change)="onChangeSymbols()" type="checkbox" name="" id="">
-</div>
-<!-- Event Binding -->
-<button [disabled]="disableBtn" (click)="onButtonClick()" type="button">Generate!</button>
-<div>
-  <p [innerText]="title"></p>
-  <!-- Property Binding -->
-  <input type="text" [value]="getPassword()">
-  <!-- Interpolation -->
-  <!-- {{getPassword()}} -->
-</div>
+
+<ng-template #empty>
+  <p class="has-text-grey-light">There is no password</p>
+</ng-template>
