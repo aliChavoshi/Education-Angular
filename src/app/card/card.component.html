@@ -39,11 +39,8 @@
       <button class="button is-light" type="button">Button</button>
     </div> -->
     <div class="control">
-      <button
-        class="button is-primary"
-        [disabled]="!(includeLetters || includeNumbers || includeSymbols)"
-        (click)="onButtonClick()"
-        type="button">
+      <button class="button is-primary" [disabled]="!(includeLetters || includeNumbers || includeSymbols)"
+        (click)="onButtonClick()" type="button">
         Generate&nbsp;<i class="fa-solid fa-repeat"></i>
       </button>
     </div>
@@ -60,6 +57,14 @@
   </div>
 </div>
 
+
 <ng-template #empty>
   <p class="has-text-grey-light">There is no password</p>
 </ng-template>
+
+
+<ng-container *ngFor="let item of courses">
+  <ul>
+    <li>{{item}}</li>
+  </ul>
+</ng-container>

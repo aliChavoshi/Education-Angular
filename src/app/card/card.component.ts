@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  @Input({required : true}) courses!: string[];
+  //
   showMyPass = false;
   title = 'Your Password';
   length: number = 0;

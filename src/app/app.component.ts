@@ -12,5 +12,5 @@ import { CardComponent } from './card/card.component';
   standalone: true,
 })
 export class AppComponent {
-  courses = ['C#', 'Angular', 'CSS'];
+  myCourses = ['C#', 'Angular', 'CSS'];
 }
