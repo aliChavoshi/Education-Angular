@@ -1,5 +1,4 @@
-<app-card [courses]="myCourses"/>
+<ng-container *ngFor="let item of products">
+  <app-card [product]="item" [title]="item.price" (isAvailable)="onAvailable($event)"></app-card>
+</ng-container>
 
-
-<!-- <ng-template #name></ng-template> -->
-<!-- <div class="app-card"></div> -->

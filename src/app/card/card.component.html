@@ -1,70 +1,27 @@
-<h1 class="title is-3 has-text-centered">Password Generator</h1>
-
-<div class="box p-5">
-  <!-- Length Input -->
-  <div class="field">
-    <label class="label">Length</label>
-    <div class="control">
-      <input class="input" type="number" (input)="onChangeLength($event)" [(ngModel)]="length" />
+<div class="card container">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="https://bulma.io/assets/images/placeholders/1280x960.png" alt="Placeholder image" />
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="https://bulma.io/assets/images/placeholders/96x96.png" alt="Placeholder image" />
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">{{product.name | lowercase }}</p>
+        <p class="subtitle is-6">{{product.price | number }}</p>
+      </div>
     </div>
-  </div>
 
-  <!-- Use Letters -->
-  <div class="field">
-    <label class="checkbox">
-      <input type="checkbox" (change)="onChangeLetters()" />
-      Use Letters
-    </label>
-  </div>
-
-  <!-- Use Numbers -->
-  <div class="field">
-    <label class="checkbox">
-      <input type="checkbox" (change)="onChangeNumbers()" />
-      Use Numbers
-    </label>
-  </div>
-
-  <!-- Use Symbols -->
-  <div class="field">
-    <label class="checkbox">
-      <input type="checkbox" (change)="onChangeSymbols()" />
-      Use Symbols
-    </label>
-  </div>
-
-  <!-- Buttons -->
-  <div class="field is-grouped mt-4">
-    <!-- <div class="control">
-      <button class="button is-light" type="button">Button</button>
-    </div> -->
-    <div class="control">
-      <button class="button is-primary" [disabled]="!(includeLetters || includeNumbers || includeSymbols)"
-        (click)="onButtonClick()" type="button">
-        Generate&nbsp;<i class="fa-solid fa-repeat"></i>
-      </button>
+    <div class="content">
+      {{title}}
+      <button class="button" (click)="onClick()">Add To Cart</button>
+      <br />
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
     </div>
   </div>
 </div>
-
-<!-- Output -->
-<div *ngIf="showMyPass; else empty" class="notification is-info p-5">
-  <p class="has-text-weight-semibold">{{ title }}</p>
-  <div class="field">
-    <div class="control">
-      <input class="input is-info" type="text" [value]="getPassword()" readonly />
-    </div>
-  </div>
-</div>
-
-
-<ng-template #empty>
-  <p class="has-text-grey-light">There is no password</p>
-</ng-template>
-
-
-<ng-container *ngFor="let item of courses">
-  <ul>
-    <li>{{item}}</li>
-  </ul>
-</ng-container>
